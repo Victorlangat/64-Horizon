@@ -1,0 +1,47 @@
+.about-us {
+    position: ;
+    width:700px;
+    height:500px;
+    margin-left: 15%;
+    margin-top: 27%;
+  }
+  
+  .aboutusimage {
+    margin-top:17% ;
+    background:  radial-gradient(circle at center, transparent, rgba(0, 0, 0, 1)),  url('C:\Users\ADMIN\OneDrive\Desktop\moviebooking app practise\movieapp\public\aboutus.avif') no-repeat center center/cover;
+    width: 100%;
+    height:70%;
+  }
+  
+  .aboutusoverlay {
+    position:;
+    top: 40%;
+    left: 10%;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    background-color: rgba(72,139,139,0.3);
+    border-radius: 3%;
+  }
+  
+  .aboutusimage::before {
+    content: "";
+    position: ;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  }
+   .abouthead{
+    margin-top: 50%;
+   }
+  
+  h2 .abouthead{
+     margin-top:50% ;
+     font-size:16px;
+     font-weight:650;
+     font-family: sans-serif 'poppins';
+  }
+  p{
+    
+  }
