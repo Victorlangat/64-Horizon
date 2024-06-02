@@ -4,7 +4,7 @@
     background-color: rgba(72, 128, 128, 0.3);
     margin-left: 20%;
     margin-top:14%;
-    position:;
+    /* position:; */
     top: 0;
     left:0;
     position:absolute;
@@ -31,7 +31,8 @@
     height:600px;
     background-image: 
         radial-gradient(circle at center, transparent, rgba(0, 0, 0, 1)), 
-        url('C:\\Users\\ADMIN\\OneDrive\\Desktop\\moviebooking app practise\\movieapp\\public\\cinemagoto.jpg');
+        /* url('C:\\Users\\ADMIN\\OneDrive\\Desktop\\moviebooking app practise\\movieapp\\public\\cinemagoto.jpg') */
+        ;
     background-repeat: no-repeat;
     background-position: center; 
     background-size: cover; 

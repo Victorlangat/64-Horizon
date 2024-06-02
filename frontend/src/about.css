@@ -1,5 +1,5 @@
 .about-us {
-    position: ;
+    /* position: ; */
     width:700px;
     height:500px;
     margin-left: 15%;
@@ -8,13 +8,13 @@
   
   .aboutusimage {
     margin-top:17% ;
-    background:  radial-gradient(circle at center, transparent, rgba(0, 0, 0, 1)),  url('C:\Users\ADMIN\OneDrive\Desktop\moviebooking app practise\movieapp\public\aboutus.avif') no-repeat center center/cover;
+    /* background:  radial-gradient(circle at center, transparent, rgba(0, 0, 0, 1)),  url('C:\Users\ADMIN\OneDrive\Desktop\moviebooking app practise\movieapp\public\aboutus.avif') no-repeat center center/cover; */
     width: 100%;
     height:70%;
   }
   
   .aboutusoverlay {
-    position:;
+    /* position:; */
     top: 40%;
     left: 10%;
     color: white;
@@ -25,7 +25,7 @@
   
   .aboutusimage::before {
     content: "";
-    position: ;
+    /* position: ; */
     top: 0;
     left: 0;
     width: 100%;

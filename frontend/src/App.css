@@ -56,7 +56,7 @@ a:hover{
   height:500px;
   margin-left:7.5px;
   margin-top:5%;
-  background-image: url('C:\Users\ADMIN\OneDrive\Desktop\moviebooking app practise\movieapp\public\cinema.avif');
+  /* background-image: url('C:\Users\ADMIN\OneDrive\Desktop\moviebooking app practise\movieapp\public\cinema.avif'); */
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -85,7 +85,7 @@ a:hover{
 }
 #planetofapes{
   border-radius: 5%;
-  transition: ;
+  /* transition: ; */
 }
 #planetofapes:hover{
   
