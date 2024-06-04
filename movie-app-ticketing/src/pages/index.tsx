@@ -7,8 +7,9 @@ import {
   MovieCardMedia,
   MovieCardContent,
 } from "@/StyledComponents/Landing";
-import { Typography } from "@mui/material";
+import { Box, Link, Typography } from "@mui/material";
 import TheatreCard from "@/Components/TheatreCard";
+import ContactUs from "@/Components/Contact";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -46,14 +47,44 @@ export default function Home() {
       </Head>
       <DefaultLayout>
         <MainContainer>
-          <Typography
-            variant="h3"
-            component="h1"
-            gutterBottom
-            sx={{ width: "100%", textAlign: "center", mt: 3 }}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              width: "100%",
+            }}
           >
-            Trending Movies Now
-          </Typography>
+            <Typography
+              variant="h3"
+              component="h1"
+              gutterBottom
+              sx={{
+                mt: 3,
+                fontSize: { xs: "25px", md: "40px" },
+                p: 4,
+                width:"50%",
+                textAlign:"center",
+              }}
+            >
+              Trending Movies Now
+            </Typography>
+            <Link href="/movies">
+              <Typography
+                variant="h5"
+                component="div"
+                sx={{
+                  color: "#fff",
+                  textDecoration: "none",
+                  fontWeight: "800",
+                  p: 4,
+                }}
+              >
+                view all
+              </Typography>
+            </Link>
+          </Box>
           {movies.map((movie) => (
             <MovieCard key={movie.title}>
               <MovieCardMedia
@@ -71,18 +102,49 @@ export default function Home() {
               </MovieCardContent>
             </MovieCard>
           ))}
-          <Typography
-            variant="h3"
-            component="h1"
-            gutterBottom
-            sx={{ width: "100%", textAlign: "center", mt: 3 }}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              width: "100%",
+            }}
           >
-            Theatres to visit
-          </Typography>
+            <Typography
+              variant="h3"
+              component="h1"
+              gutterBottom
+              sx={{
+                mt: 3,
+                fontSize: { xs: "25px", md: "40px" },
+                p: 4,
+                width:"40%",
+                textAlign:"center",
+              }}
+            >
+              Theatres to visit
+            </Typography>
+            <Link href="/movies">
+              <Typography
+                variant="h5"
+                component="div"
+                sx={{
+                  p: 4,
+                  color: "#fff",
+                  textDecoration: "none",
+                  fontWeight: "800",
+                }}
+              >
+                view all
+              </Typography>
+            </Link>
+          </Box>
           {movies.map((movie) => (
-            <TheatreCard key={movie.title}/>
+            <TheatreCard key={movie.title} />
           ))}
         </MainContainer>
+        <ContactUs />
       </DefaultLayout>
     </>
   );

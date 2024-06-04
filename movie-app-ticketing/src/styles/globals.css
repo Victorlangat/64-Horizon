@@ -3,10 +3,16 @@
   padding:0;
   box-sizing: border-box;
   max-width: 100vw;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
 }
 
 body{
   width:100vw;
   max-width: 100vw;
   overflow-x: hidden ;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
 }

@@ -13,10 +13,11 @@ export const MainContainer = styled(Box)(({ theme }) => ({
   backgroundColor: '#001232',
   color: '#fff',
   width: "100vw",
+  paddingBottom:"50px",
   [theme.breakpoints.down('sm')]: {
     flexDirection: 'column',
     height: 'auto',
-    paddingTop: '60px',
+    // paddingTop: '60px',
   },
 }));
 

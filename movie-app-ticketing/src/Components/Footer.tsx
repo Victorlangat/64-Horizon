@@ -8,7 +8,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 const FooterContainer = styled(Box)({
-  backgroundColor: "#000",
+  backgroundColor: "#001232",
   color: "#fff",
   padding: "40px 0",
   width: "100%",
@@ -23,7 +23,7 @@ const SocialMediaContainer = styled(Box)({
 
 const FooterLink = styled(Link)({
   color: "#fff",
-  paddingBottom: "8px",
+  mb: "18px",
   '&:hover': {
     textDecoration: "underline",
   }
@@ -34,7 +34,7 @@ const Footer = () => {
     <FooterContainer>
       <Container>
         <Grid container spacing={4}>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={6} sm={6} md={3}>
             <Typography variant="h6" gutterBottom>
               Company
             </Typography>
@@ -42,7 +42,7 @@ const Footer = () => {
             <FooterLink href="#">Careers</FooterLink><br/>
             <FooterLink href="#">Press</FooterLink><br/>
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={6} sm={6} md={3}>
             <Typography variant="h6" gutterBottom>
               Support
             </Typography>
@@ -50,7 +50,7 @@ const Footer = () => {
             <FooterLink href="#">Contact Us</FooterLink><br/>
             <FooterLink href="#">Privacy Policy</FooterLink><br/>
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={6} sm={6} md={3}>
             <Typography variant="h6" gutterBottom>
               Services
             </Typography>
@@ -59,7 +59,7 @@ const Footer = () => {
             <FooterLink href="#">Gift Cards</FooterLink><br/>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h6" gutterBottom sx={{width:"100%", textAlign:"center"}}>
               Follow Us
             </Typography>
             <SocialMediaContainer>
