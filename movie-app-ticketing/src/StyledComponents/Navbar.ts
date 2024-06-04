@@ -7,6 +7,8 @@ export const MainNavContainer = styled(AppBar)({
   display: 'flex',
   justifyContent: 'center',
   position: 'fixed',
+  width:"100vw",
+  zIndex:1000
 });
 
 export const DrawerContainer = styled(Box)({
@@ -17,7 +19,7 @@ export const NavList = styled(List)({
   display: 'flex',
   justifyContent: 'center', // Align to the right
   flexGrow: 1,
-  padding: '0 20px',
+  // padding: '0 20px',
 });
 
 export const NavItem = styled(ListItem)({
@@ -39,4 +41,5 @@ export const LogoContainer = styled(Box)({
   display: 'flex',
   alignItems: 'center',
   flexGrow: 1, // Take up remaining space
+  maxWidth:"90vw"
 });

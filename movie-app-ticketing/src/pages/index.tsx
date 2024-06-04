@@ -1,11 +1,41 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import DefaultLayout from "@/Layouts/DefaultLayout";
-import { MainContainer } from "@/StyledComponents/Landing";
+import {
+  MainContainer,
+  MovieCard,
+  MovieCardMedia,
+  MovieCardContent,
+} from "@/StyledComponents/Landing";
+import { Typography } from "@mui/material";
+import TheatreCard from "@/Components/TheatreCard";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const movies = [
+    {
+      title: "Movie 1",
+      image: "https://source.unsplash.com/1000x1000/?grinch",
+      bio: "This is a short bio for Movie 1.",
+    },
+    {
+      title: "Movie 2",
+      image: "https://source.unsplash.com/1000x1000/?iron-man",
+      bio: "This is a short bio for Movie 2.",
+    },
+    {
+      title: "Movie 3",
+      image: "https://source.unsplash.com/1000x1000/?marvel",
+      bio: "This is a short bio for Movie 3.",
+    },
+    {
+      title: "Movie 4",
+      image: "https://source.unsplash.com/1000x1000/?spiderman",
+      bio: "This is a short bio for Movie 4.",
+    },
+  ];
+
   return (
     <>
       <Head>
@@ -16,7 +46,42 @@ export default function Home() {
       </Head>
       <DefaultLayout>
         <MainContainer>
-          
+          <Typography
+            variant="h3"
+            component="h1"
+            gutterBottom
+            sx={{ width: "100%", textAlign: "center", mt: 3 }}
+          >
+            Trending Movies Now
+          </Typography>
+          {movies.map((movie) => (
+            <MovieCard key={movie.title}>
+              <MovieCardMedia
+                // component="img"
+                image={movie.image}
+                // alt={movie.title}
+              />
+              <MovieCardContent>
+                <Typography variant="h5" component="div">
+                  {movie.title}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {movie.bio}
+                </Typography>
+              </MovieCardContent>
+            </MovieCard>
+          ))}
+          <Typography
+            variant="h3"
+            component="h1"
+            gutterBottom
+            sx={{ width: "100%", textAlign: "center", mt: 3 }}
+          >
+            Theatres to visit
+          </Typography>
+          {movies.map((movie) => (
+            <TheatreCard key={movie.title}/>
+          ))}
         </MainContainer>
       </DefaultLayout>
     </>

@@ -2,14 +2,13 @@ import React from "react";
 import { Container } from "@mui/material";
 import { useRouter } from "next/router";
 import Navbar from "@/Components/Navbar";
+import Footer from "@/Components/Footer";
 
 interface DefaultLayoutProps {
   children: React.ReactNode;
 }
 
-const DefaultLayout: React.FC<DefaultLayoutProps> = ({
-  children,
-}) => {
+const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
   const { pathname } = useRouter();
   const isIndex = pathname === "/";
 
@@ -19,8 +18,9 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({
 
   return (
     <>
-    <Navbar/>
-        <>{children}</>
+      <Navbar />
+      {children}
+      <Footer />
     </>
   );
 };
