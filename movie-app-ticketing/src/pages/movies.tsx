@@ -55,65 +55,59 @@ function Movies() {
 
   return (
     <>
-    <DefaultLayout>
-      <MainContainer>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            width: "100%",
-          }}
-        >
-          <Typography
-            variant="h3"
-            component="h1"
-            gutterBottom
+      <DefaultLayout>
+        <MainContainer>
+          <Box
             sx={{
-              mt: 3,
-              fontSize: { xs: "25px", md: "40px" },
-              p: 4,
-            //   width: "50%",
-            //   textAlign: "center",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              flexWrap: "wrap",
+              width: "100%",
             }}
           >
-            Trending Movies Now
-          </Typography>
-          <Link href="/movies">
             <Typography
-              variant="h5"
-              component="div"
+              sx={{
+                fontSize: { xs: "16px", md: "23px" },
+                p: { xs: 2, md: 4 },
+                width: "35%",
+                fontWeight: "800",
+              }}
+            >
+              Trending Movies Now
+            </Typography>
+            <Typography
               sx={{
                 color: "#fff",
                 textDecoration: "none",
                 fontWeight: "800",
-                p: 4,
+                p: { xs: 2, md: 4 },
+                width: "35%",
+                textAlign: "right",
               }}
             >
               view all
             </Typography>
-          </Link>
-        </Box>
-        {movies.map((movie) => (
-          <MovieCard key={movie.title}>
-            <MovieCardMedia
-              // component="img"
-              image={movie.image}
-              // alt={movie.title}
-            />
-            <MovieCardContent>
-              <Typography variant="h5" component="div">
-                {movie.title}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {movie.bio}
-              </Typography>
-            </MovieCardContent>
-          </MovieCard>
-        ))}
-      </MainContainer>
-    </DefaultLayout>
+          </Box>
+          {movies.map((movie) => (
+            <MovieCard key={movie.title}>
+              <MovieCardMedia
+                // component="img"
+                image={movie.image}
+                // alt={movie.title}
+              />
+              <MovieCardContent>
+                <Typography variant="h5" component="div">
+                  {movie.title}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {movie.bio}
+                </Typography>
+              </MovieCardContent>
+            </MovieCard>
+          ))}
+        </MainContainer>
+      </DefaultLayout>
     </>
   );
 }

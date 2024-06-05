@@ -11,7 +11,12 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 import { motion } from "framer-motion";
 
-function TheatreCard() {
+interface TheatreCardProps {
+  title: string;
+  image: string;
+  bio: string;
+}
+function TheatreCard({ title, image, bio }: TheatreCardProps) {
   const theme = useTheme();
   
   return (
@@ -20,44 +25,31 @@ function TheatreCard() {
         whileHover={{ scale: 1.05, boxShadow: "0 8px 16px rgba(0,0,0,0.3)" }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
       >
-        <Card sx={{ display: "flex", m: 2, cursor:"pointer" }}>
+        <Card sx={{ display: "flex", m: 2, cursor:"pointer", width:"450px", maxWidth:"90vw" }}>
           <Box sx={{ display: "flex", flexDirection: "column" }}>
             <CardContent sx={{ flex: "1 0 auto" }}>
               <Typography component="div" variant="h5">
-                Live From Space
+                {title}
               </Typography>
               <Typography
                 variant="subtitle1"
                 color="text.secondary"
                 component="div"
+                sx={{width:"200px", fontSize:{XS:"2px", md:"16px"}}}
               >
-                Mac Miller
+                {bio}
               </Typography>
             </CardContent>
             <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
-              <IconButton aria-label="previous">
-                {theme.direction === "rtl" ? (
-                  <SkipNextIcon />
-                ) : (
-                  <SkipPreviousIcon />
-                )}
-              </IconButton>
               <IconButton aria-label="play/pause">
                 <PlayArrowIcon sx={{ height: 38, width: 38 }} />
-              </IconButton>
-              <IconButton aria-label="next">
-                {theme.direction === "rtl" ? (
-                  <SkipPreviousIcon />
-                ) : (
-                  <SkipNextIcon />
-                )}
               </IconButton>
             </Box>
           </Box>
           <CardMedia
             component="img"
             sx={{ width: 151 }}
-            image="https://source.unsplash.com/1000x1000/?concert"
+            image={image}
             alt="Live from space album cover"
           />
         </Card>

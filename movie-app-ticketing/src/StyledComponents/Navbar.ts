@@ -41,5 +41,7 @@ export const LogoContainer = styled(Box)({
   display: 'flex',
   alignItems: 'center',
   flexGrow: 1, // Take up remaining space
-  maxWidth:"90vw"
+  maxWidth:"90vw",
+  justifyContent: 'center',
+  // "@media"
 });

@@ -16,7 +16,6 @@ const links: LinkItem[] = [
   { label: 'Movies', href: '/movies' },
   { label: 'Theatre', href: '/theatre' },
   { label: 'Contact Us', href: '/contact' },
-  { label: 'register/Signin', href: '/login' },
 ];
 
 const Navbar: React.FC = () => {
@@ -30,7 +29,7 @@ const Navbar: React.FC = () => {
     <MainNavContainer position="static">
       <Toolbar>
         <LogoContainer>
-          <Image src="/logo-no-background.png" width={120} alt="logo" height={50}/>
+          <Image src="/logo-no-background.png" width={160} alt="logo" height={45}/>
         </LogoContainer>
         <NavList sx={{ display: { xs: 'none', sm: 'flex' } }}>
           {links.map((link) => (
