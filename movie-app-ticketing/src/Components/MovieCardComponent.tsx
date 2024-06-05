@@ -1,6 +1,8 @@
 import {MovieCard,  MovieCardMedia, MovieCardContent } from "@/StyledComponents/Landing";
-import { Typography } from "@mui/material";
+import { IconButton, Typography } from "@mui/material";
 import React from "react";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+
 
 function MovieCardComponent() {
   const movies = [
@@ -43,6 +45,9 @@ function MovieCardComponent() {
               {movie.bio}
             </Typography>
           </MovieCardContent>
+          <IconButton aria-label="play/pause">
+                <PlayArrowIcon sx={{ height: 38, width: 38 }} />
+              </IconButton>
         </MovieCard>
       ))}
     </>

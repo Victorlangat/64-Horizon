@@ -1,9 +1,6 @@
 import DefaultLayout from "@/Layouts/DefaultLayout";
 import {
   MainContainer,
-  MovieCard,
-  MovieCardMedia,
-  MovieCardContent,
 } from "@/StyledComponents/Landing";
 import { Typography, Box } from "@mui/material";
 import Link from "next/link";
