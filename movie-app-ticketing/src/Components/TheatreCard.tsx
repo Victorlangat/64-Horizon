@@ -10,6 +10,7 @@ import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 
 interface TheatreCardProps {
   title: string;
@@ -18,6 +19,7 @@ interface TheatreCardProps {
 }
 function TheatreCard({ title, image, bio }: TheatreCardProps) {
   const theme = useTheme();
+  const router = useRouter();
   
   return (
     <>
@@ -25,7 +27,7 @@ function TheatreCard({ title, image, bio }: TheatreCardProps) {
         whileHover={{ scale: 1.05, boxShadow: "0 8px 16px rgba(0,0,0,0.3)" }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
       >
-        <Card sx={{ display: "flex", m: 2, cursor:"pointer", width:"450px", maxWidth:"90vw" }}>
+        <Card sx={{ display: "flex", m: 2, cursor:"pointer", width:"450px", maxWidth:"90vw" }} onClick={() => {router.push("/movies")}}>
           <Box sx={{ display: "flex", flexDirection: "column" }}>
             <CardContent sx={{ flex: "1 0 auto" }}>
               <Typography component="div" variant="h5">

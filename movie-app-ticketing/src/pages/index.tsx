@@ -6,10 +6,12 @@ import { Box, Link, Typography } from "@mui/material";
 import TheatreCard from "@/Components/TheatreCard";
 import ContactUs from "@/Components/Contact";
 import MovieCardComponent from "@/Components/MovieCardComponent";
+import {useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const router = useRouter();
   const nairobiTheatres = [
     {
       title: "The Kenya National Theatre",
@@ -90,6 +92,7 @@ export default function Home() {
               title={movie.title}
               image={movie.image}
               bio={movie.bio}
+              
             />
           ))}
           <Box

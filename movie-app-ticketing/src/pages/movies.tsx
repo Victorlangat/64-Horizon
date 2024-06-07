@@ -6,11 +6,12 @@ import {
   MovieCardContent,
 } from "@/StyledComponents/Landing";
 import { Typography, Box, IconButton } from "@mui/material";
-import Link from "next/link";
 import React from "react";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import {useRouter } from "next/router";
 
 function Movies() {
+  const router = useRouter();
   const movies = [
     {
       title: "The Godfather",
@@ -81,7 +82,7 @@ function Movies() {
             </Typography>
           </Box>
           {movies.map((movie) => (
-            <MovieCard key={movie.title}>
+            <MovieCard key={movie.title} onClick={() => {router.push("/MoviePage")}}>
               <MovieCardMedia
                 // component="img"
                 image={movie.image}

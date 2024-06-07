@@ -2,9 +2,11 @@ import {MovieCard,  MovieCardMedia, MovieCardContent } from "@/StyledComponents/
 import { IconButton, Typography } from "@mui/material";
 import React from "react";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import {useRouter } from "next/router";
 
 
 function MovieCardComponent() {
+  const router = useRouter();
   const movies = [
     {
       title: "The Godfather",
@@ -30,7 +32,7 @@ function MovieCardComponent() {
   return (
     <>
       {movies.map((movie) => (
-        <MovieCard key={movie.title}>
+        <MovieCard key={movie.title} onClick={() => {router.push("/MoviePage")}}>
           <MovieCardMedia
           sx={{width:"100%"}}
             // component="img"
