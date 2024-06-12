@@ -15,7 +15,7 @@ const links: LinkItem[] = [
   { label: 'Home', href: '/' },
   { label: 'Movies', href: '/movies' },
   { label: 'Theatre', href: '/theatre' },
-  { label: 'Contact Us', href: '/contact' },
+  
 ];
 
 const Navbar: React.FC = () => {
