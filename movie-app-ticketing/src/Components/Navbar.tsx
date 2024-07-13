@@ -21,8 +21,22 @@ const links: LinkItem[] = [
 const Navbar: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
+  //state for movie list
+  const [movies, setMovies] = useState([]);
+
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
+  };
+
+  //function for admin to add movies
+  const addMovie = (newMovie) => {
+    setMovies([movies, newMovie]);
+  };
+
+  //function for admin to remove movies 
+  const removeMovie = (movieId) => {
+    const updatedMovies = movies.filter((movie) => movie.id !== movieId);
+    setMovies(updatedMovies);
   };
 
   return (
@@ -49,6 +63,13 @@ const Navbar: React.FC = () => {
         >
           <MenuIcon />
         </IconButton>
+
+      {/*Buttons for adding and removing movie*/}
+
+      <button onClick={() => addMovie({id:1,
+        title: 'New Movie' })}> Add Movie </button>
+        <button onClick={() => removeMovie(1)}>Remove Movie</button>
+
       </Toolbar>
       <Drawer
         anchor="top"
