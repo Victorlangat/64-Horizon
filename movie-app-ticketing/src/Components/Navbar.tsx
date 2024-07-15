@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   //state for movie list
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState<any>();
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
