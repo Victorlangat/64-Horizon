@@ -15,25 +15,20 @@ const links: LinkItem[] = [
   { label: 'Home', href: '/' },
   { label: 'Movies', href: '/movies' },
   { label: 'Theatre', href: '/theatre' },
-  
 ];
 
 const Navbar: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
-
-  //state for movie list
-  const [movies, setMovies] = useState<any>();
+  const [movies, setMovies] = useState<any>(); // State for movie list
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
   };
 
-  //function for admin to add movies
   const addMovie = (newMovie) => {
-    setMovies([movies, newMovie]);
+    setMovies([...movies, newMovie]); // Use spread operator to update the movie list
   };
 
-  //function for admin to remove movies 
   const removeMovie = (movieId) => {
     const updatedMovies = movies.filter((movie) => movie.id !== movieId);
     setMovies(updatedMovies);
@@ -43,13 +38,13 @@ const Navbar: React.FC = () => {
     <MainNavContainer position="static">
       <Toolbar>
         <LogoContainer>
-          <Image src="/logo-no-background.png" width={160} alt="logo" height={45}/>
+          <Image src="/logo-no-background.png" width={160} alt="logo" height={45} />
         </LogoContainer>
         <NavList sx={{ display: { xs: 'none', sm: 'flex' } }}>
           {links.map((link) => (
             <NavItem key={link.href}>
-              <Link href={link.href} passHref style={{textDecoration:"none", fontWeight:"800"}}>
-                <ListItemText primary={link.label} sx={{color:"#fff", textDecoration:"none", fontWeight:"800"}}/>
+              <Link href={link.href} passHref style={{ textDecoration: 'none', fontWeight: 800 }}>
+                <ListItemText primary={link.label} sx={{ color: '#fff', textDecoration: 'none', fontWeight: 800 }} />
               </Link>
             </NavItem>
           ))}
@@ -63,24 +58,14 @@ const Navbar: React.FC = () => {
         >
           <MenuIcon />
         </IconButton>
-
-      {/*Buttons for adding and removing movie*/}
-
-      <button onClick={() => addMovie({id:1,
-        title: 'New Movie' })}> Add Movie </button>
-        <button onClick={() => removeMovie(1)}>Remove Movie</button>
-
       </Toolbar>
-      <Drawer
-        anchor="top"
-        open={drawerOpen}
-        onClose={handleDrawerToggle}
-      >
-        <DrawerContainer
-          role="presentation"
-          onClick={handleDrawerToggle}
-          onKeyDown={handleDrawerToggle}
-        >
+
+      {/* Buttons for adding and removing movies */}
+      <button onClick={() => addMovie({ id: 1, title: 'New Movie' })}>Add Movie</button>
+      <button onClick={() => removeMovie(1)}>Remove Movie</button>
+
+      <Drawer anchor="top" open={drawerOpen} onClose={handleDrawerToggle}>
+        <DrawerContainer role="presentation" onClick={handleDrawerToggle} onKeyDown={handleDrawerToggle}>
           <MobileNavList>
             {links.map((link) => (
               <ListItem button key={link.href}>
@@ -89,6 +74,13 @@ const Navbar: React.FC = () => {
                 </Link>
               </ListItem>
             ))}
+            {/* Including the buttons in the drawer */}
+            <ListItem button onClick={() => addMovie({ id: 2, title: 'Another Movie' })}>
+              <ListItemText primary="Add Movie" />
+            </ListItem>
+            <ListItem button onClick={() => removeMovie(2)}>
+              <ListItemText primary="Remove Movie" />
+            </ListItem>
           </MobileNavList>
         </DrawerContainer>
       </Drawer>
