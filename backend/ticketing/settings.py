@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-!&4uml=zz30yjx(&g^4v^p1molhtp6vbjvb-6ht)3zoyw#c2im
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'theatres',
     'tickets',
     'users',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
