@@ -48,6 +48,14 @@ const Navbar: React.FC = () => {
               </Link>
             </NavItem>
           ))}
+
+            <NavItem>
+            <button onClick={() => addMovie({ id: 1, title: 'New Movie' })}>Add Movie</button>
+            </NavItem>
+            <NavItem>
+            <button onClick={() => removeMovie(1)}>Remove Movie</button>
+            </NavItem>
+            
         </NavList>
         <IconButton
           edge="start"
@@ -59,11 +67,7 @@ const Navbar: React.FC = () => {
           <MenuIcon />
         </IconButton>
       </Toolbar>
-
-      {/* Buttons for adding and removing movies */}
-      <button onClick={() => addMovie({ id: 1, title: 'New Movie' })}>Add Movie</button>
-      <button onClick={() => removeMovie(1)}>Remove Movie</button>
-
+      
       <Drawer anchor="top" open={drawerOpen} onClose={handleDrawerToggle}>
         <DrawerContainer role="presentation" onClick={handleDrawerToggle} onKeyDown={handleDrawerToggle}>
           <MobileNavList>
