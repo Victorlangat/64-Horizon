@@ -13,10 +13,20 @@ class MovieModel(models.Model):
 
 class MovieSchedule(models.Model):
     movie = models.ForeignKey(MovieModel, on_delete=models.CASCADE)
+    # theatre = models.ForeignKey('theatres.MovieTheatre', on_delete=models.CASCADE)
     show_time = models.DateTimeField()
-    theatre = models.ForeignKey('theatres.MovieTheatre', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"{self.movie.title} - {self.theatre.name} - {self.show_time}"
+    
+class ViewHistory(models.Model):
+    # movie = models.ForeignKey(MovieModel, on_delete=models.CASCADE)
+    # booking = models.ForeignKey('bookings.BookingDB', on_delete=models.CASCADE)
+    last_viewed = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return f"{self.movie.title} - {self.user.username} - {self.last_viewed}"

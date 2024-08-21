@@ -12,9 +12,9 @@ class MovieTheatre(models.Model):
 
 
 class TheatreSeat(models.Model):
-    theatre = models.ForeignKey(MovieTheatre, on_delete=models.CASCADE)
+    # theatre = models.ForeignKey(MovieTheatre, on_delete=models.CASCADE)
     seat_row = models.CharField(max_length=1)  # Single letter to represent the row
-    number_of_seats = models.PositiveIntegerField()
+    seat_number = models.CharField(max_length=3)  # 2-digit number to represent the seat number
     row_range = models.CharField(max_length=10, blank=True)  # Can be populated in save method
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
