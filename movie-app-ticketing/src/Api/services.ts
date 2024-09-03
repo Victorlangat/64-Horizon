@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import dotenv from "dotenv";
 dotenv.config();
 
-const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URI;
+const baseUrl = "http://127.0.0.1:8000/";
 export const Auth = createApi({
   reducerPath: "Auth",
   baseQuery: fetchBaseQuery({ baseUrl }),
@@ -16,9 +16,28 @@ export const Auth = createApi({
         },
       }),
     }),
+    getAllMovies: builder.query({
+      query: () => ({
+        url: `movies/movies/all`,
+        method: "GET",
+        // headers: {
+        //   Authorization: `Bearer ${token}`,
+        // },
+      }),
+    }),
+    getSingleMovie: builder.mutation({
+      query: (body:any) => ({
+        url: `movies/movies/single`,
+        method: "PATCH",
+        body:body
+        // headers: {
+        //   Authorization: `Bearer ${token}`,
+        // },
+      }),
+    }),
   }),
 });
-export const { useGetUserDetailsQuery }: any = Auth;
+export const { useGetUserDetailsQuery, useGetAllMoviesQuery, useGetSingleMovieMutation }: any = Auth;
 
 export const Billing = createApi({
   reducerPath: "Billing",

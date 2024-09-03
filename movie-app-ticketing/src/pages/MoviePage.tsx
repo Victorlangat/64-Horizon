@@ -1,5 +1,5 @@
 // src/pages/MoviePage.tsx
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Typography,
@@ -14,12 +14,17 @@ import {
   CardContent,
   CardMedia,
 } from "@mui/material";
+import { useGetSingleMovieMutation } from "@/Api/services";
 import { styled, useTheme } from "@mui/system";
 import DefaultLayout from "@/Layouts/DefaultLayout";
 import router from "next/router";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import { MovieCard, MovieCardMedia, MovieCardContent } from "@/StyledComponents/Landing";
-import {useRouter} from "next/router";
+import {
+  MovieCard,
+  MovieCardMedia,
+  MovieCardContent,
+} from "@/StyledComponents/Landing";
+import { useRouter } from "next/router";
 const Container = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
@@ -55,7 +60,7 @@ const CinemaCard = styled(Card)(({ theme }) => ({
   flexDirection: "column",
   justifyContent: "space-between",
   borderRadius: "10px",
-//   boxShadow: theme.shadows[3],
+  //   boxShadow: theme.shadows[3],
   border: `1px solid ${theme.palette.divider}`,
 }));
 
@@ -72,7 +77,28 @@ const BannerImage = styled("img")({
 const MoviePage = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-const router = useRouter();
+  const router = useRouter();
+  const [getmovie, { isLoading, error }] = useGetSingleMovieMutation();
+  const [MovieData, setMovieData] = useState();
+
+  const getSingleMovie = async () => {
+    try {
+      const response = await getmovie({ id: 1 });
+      if (response.data) {
+        const data = response.data;
+        setMovieData(data);
+        console.log(MovieData, "=-==-=");
+        // Redirect or show success message
+      } else if (response.error) {
+        console.error(response.error);
+      }
+    } catch (error) {
+      console.error("Login failed");
+    }
+  };
+  useEffect(() => {
+    getSingleMovie();
+  }, []);
   // Fetch movie data based on the id
   // This is a placeholder. Replace with actual data fetching logic.
   const fetchedMovie = {
@@ -104,8 +130,13 @@ const router = useRouter();
   return (
     <DefaultLayout>
       <Box sx={{ width: "100%", background: "#001232" }}>
-        <Container sx={{ pt: 20, maxWidth: "1400px", m:"auto" }}>
-          <Typography variant="h4" component="h1" gutterBottom sx={{color:"#fff"}}>
+        <Container sx={{ pt: 20, maxWidth: "1400px", m: "auto" }}>
+          <Typography
+            variant="h4"
+            component="h1"
+            gutterBottom
+            sx={{ color: "#fff" }}
+          >
             {fetchedMovie.title}
           </Typography>
           <Grid container spacing={2}>
@@ -161,12 +192,21 @@ const router = useRouter();
                       </Typography>
                       <List>
                         {cinema.times.map((time, timeIndex) => (
-                          <ListItem key={timeIndex} sx={{ mb:2, borderRadius:"10px", background:"rgb(10,31,95, 0.2)", "&:hover":{
-                            background:"rgb(10,31,95, 0.4)",
-                            transition: "0.3s ease-in-out",
-                            cursor:"pointer"
-                          }}}
-                          onClick={() => {router.push("/bookseat")}}
+                          <ListItem
+                            key={timeIndex}
+                            sx={{
+                              mb: 2,
+                              borderRadius: "10px",
+                              background: "rgb(10,31,95, 0.2)",
+                              "&:hover": {
+                                background: "rgb(10,31,95, 0.4)",
+                                transition: "0.3s ease-in-out",
+                                cursor: "pointer",
+                              },
+                            }}
+                            onClick={() => {
+                              router.push("/bookseat");
+                            }}
                           >
                             <ListItemText primary={time} />
                           </ListItem>
@@ -185,4 +225,3 @@ const router = useRouter();
 };
 
 export default MoviePage;
-
