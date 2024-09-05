@@ -9,9 +9,12 @@ import { Typography, Box, IconButton } from "@mui/material";
 import React from "react";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import {useRouter } from "next/router";
+import { useGetAllMoviesQuery } from "@/Api/services";
 
 function Movies() {
   const router = useRouter();
+  const {data:movie_data, isLoading:is_loading_moviee, error:MovieError} = useGetAllMoviesQuery()
+  console.log(movie_data, "(*(*(")
   const movies = [
     {
       title: "The Godfather",
@@ -81,11 +84,11 @@ function Movies() {
               view all
             </Typography>
           </Box>
-          {movies.map((movie) => (
+          {movie_data?.map((movie) => (
             <MovieCard key={movie.title} onClick={() => {router.push("/MoviePage")}}>
               <MovieCardMedia
                 // component="img"
-                image={movie.image}
+                image="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQabt5_iESscctssvn8VxDbvnV7i9C42UyLOCWkFdqwJQE0VZYeg2qcXEcYYLh8td8Zna3zA5Nrk7s7SDElRyhKYiIf2AwvJ7F3mKVis5c"
                 // alt={movie.title}
                 sx={{width:"100%"}}
               />

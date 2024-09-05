@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'theatres',
     'users',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,28 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+# Allow all origins (use with caution in production)
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_HEADERS = [
+    'content-type',
+    'authorization',
+    'X-CSRFToken',
+]
+
+# Allow specific methods (optional)
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS',
 ]
 
 ROOT_URLCONF = 'ticketing.urls'
