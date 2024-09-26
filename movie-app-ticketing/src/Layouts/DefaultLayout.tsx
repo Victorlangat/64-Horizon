@@ -20,26 +20,6 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
     <>
       <Navbar />
       {children}
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      
       <Footer />
     </>
   );

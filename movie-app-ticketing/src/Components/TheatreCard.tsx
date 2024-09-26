@@ -23,10 +23,10 @@ function TheatreCard({ title, image, bio }: TheatreCardProps) {
   
   return (
     <>
-      <motion.div
+      {/* <motion.div
         whileHover={{ scale: 1.05, boxShadow: "0 8px 16px rgba(0,0,0,0.3)" }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      >
+      > */}
         <Card sx={{ display: "flex", m: 2, cursor:"pointer", width:"450px", maxWidth:"90vw" }} onClick={() => {router.push("/movies")}}>
           <Box sx={{ display: "flex", flexDirection: "column" }}>
             <CardContent sx={{ flex: "1 0 auto" }}>
@@ -55,7 +55,7 @@ function TheatreCard({ title, image, bio }: TheatreCardProps) {
             alt="Live from space album cover"
           />
         </Card>
-      </motion.div>
+      {/* </motion.div> */}
     </>
   );
 }

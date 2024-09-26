@@ -54,7 +54,7 @@ export default function Home() {
       </Head>
       <DefaultLayout>
         <MainContainer>
-          <Box
+          {/* <Box
             sx={{
               display: "flex",
               flexDirection: "row",
@@ -85,48 +85,17 @@ export default function Home() {
             >
               view all
             </Typography>
-          </Box>
+          </Box> */}
           {nairobiTheatres.map((movie) => (
-            <TheatreCard
-              key={movie.title}
-              title={movie.title}
-              image={movie.image}
-              bio={movie.bio}
+            <></>
+            // <TheatreCard
+            //   key={movie.title}
+            //   title={movie.title}
+            //   image={movie.image}
+            //   bio={movie.bio}
               
-            />
+            // />
           ))}
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-              flexWrap: "wrap",
-              width: "100%",
-            }}
-          >
-            <Typography
-              sx={{
-                fontSize: { xs: "16px", md: "23px" },
-                p: { xs: 2, md: 4 },
-                width: "35%",
-                fontWeight: "800",
-              }}
-            >
-              Trending Movies Now
-            </Typography>
-            <Typography
-              sx={{
-                color: "#fff",
-                textDecoration: "none",
-                fontWeight: "800",
-                p: { xs: 2, md: 4 },
-                width: "35%",
-                textAlign: "right",
-              }}
-            >
-              view all
-            </Typography>
-          </Box>
           <MovieCardComponent />
         </MainContainer>
         <ContactUs />
