@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <MainNavContainer position="static">
+    <MainNavContainer>
       <Toolbar>
         <LogoContainer>
           <Image src="/logo-no-background.png" width={160} alt="logo" height={45} />
@@ -79,12 +79,12 @@ const Navbar: React.FC = () => {
               </ListItem>
             ))}
             {/* Including the buttons in the drawer */}
-            <ListItem button onClick={() => addMovie({ id: 2, title: 'Another Movie' })}>
+            {/* <ListItem button onClick={() => addMovie({ id: 2, title: 'Another Movie' })}>
               <ListItemText primary="Add Movie" />
             </ListItem>
             <ListItem button onClick={() => removeMovie(2)}>
               <ListItemText primary="Remove Movie" />
-            </ListItem>
+            </ListItem> */}
           </MobileNavList>
         </DrawerContainer>
       </Drawer>

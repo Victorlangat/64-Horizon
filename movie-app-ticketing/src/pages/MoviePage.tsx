@@ -19,12 +19,17 @@ import { styled, useTheme } from "@mui/system";
 import DefaultLayout from "@/Layouts/DefaultLayout";
 import router from "next/router";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import 'react-calendar/dist/Calendar.css';
 import {
   MovieCard,
   MovieCardMedia,
   MovieCardContent,
 } from "@/StyledComponents/Landing";
 import { useRouter } from "next/router";
+import Calendar from 'react-calendar';
+type ValuePiece = Date | null;
+
+type Value = ValuePiece | [ValuePiece, ValuePiece];
 const Container = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
@@ -54,7 +59,7 @@ const CinemasContainer = styled(Box)(({ theme }) => ({
 }));
 
 const CinemaCard = styled(Card)(({ theme }) => ({
-  flex: "1 1 calc(33.333% - 20px)",
+  flex: "1 1 calc(100% - 20px)",
   margin: "10px",
   display: "flex",
   flexDirection: "column",
@@ -80,6 +85,7 @@ const MoviePage = () => {
   const router = useRouter();
   const [getmovie, { isLoading, error }] = useGetSingleMovieMutation();
   const [MovieData, setMovieData] = useState();
+  const [value, onChange] = useState<Value>(new Date());
 
   const getSingleMovie = async () => {
     try {
@@ -87,8 +93,6 @@ const MoviePage = () => {
       if (response.data) {
         const data = response.data;
         setMovieData(data);
-        console.log(MovieData, "=-==-=");
-        // Redirect or show success message
       } else if (response.error) {
         console.error(response.error);
       }
@@ -96,11 +100,10 @@ const MoviePage = () => {
       console.error("Login failed");
     }
   };
+
   useEffect(() => {
     getSingleMovie();
   }, []);
-  // Fetch movie data based on the id
-  // This is a placeholder. Replace with actual data fetching logic.
   const fetchedMovie = {
     title: "The Godfather",
     image:
@@ -115,32 +118,24 @@ const MoviePage = () => {
       {
         name: "Sarit center Cinemax",
         times: ["10:00 AM", "1:00 PM", "4:00 PM", "7:00 PM"],
-      },
-      {
-        name: "Two Rivers Cinemax",
-        times: ["11:00 AM", "2:00 PM", "5:00 PM", "8:00 PM"],
-      },
-      {
-        name: "TRM Cinemax",
-        times: ["12:00 PM", "3:00 PM", "6:00 PM", "9:00 PM"],
-      },
+      }
     ],
   };
 
   return (
     <DefaultLayout>
       <Box sx={{ width: "100%", background: "#001232" }}>
-        <Container sx={{ pt: 20, maxWidth: "1400px", m: "auto" }}>
-          <Typography
-            variant="h4"
-            component="h1"
-            gutterBottom
-            sx={{ color: "#fff" }}
-          >
-            {fetchedMovie.title}
-          </Typography>
+        <Container sx={{ pt: 20, maxWidth: "97vw", m: "auto", display:"flex", flexWrap:"wrap" }}>
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
+              <Typography
+                variant="h4"
+                component="h1"
+                gutterBottom
+                sx={{ color: "#fff" }}
+              >
+                {fetchedMovie.title}
+              </Typography>
               <VideoContainer>
                 <iframe
                   src={fetchedMovie.videoUrl}
@@ -152,7 +147,7 @@ const MoviePage = () => {
               </VideoContainer>
             </Grid>
             {!isMobile && (
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={3}>
                 <MovieCard
                   key={fetchedMovie.title}
                   onClick={() => {
@@ -177,47 +172,47 @@ const MoviePage = () => {
                 </MovieCard>
               </Grid>
             )}
-          </Grid>
-          <CinemasContainer>
-            <Typography variant="h5" component="h2" gutterBottom>
-              Cinemas Showing This Movie
-            </Typography>
-            <Grid container spacing={2}>
-              {fetchedMovie.cinemas.map((cinema, index) => (
-                <Grid item key={index} xs={12} sm={6} md={4}>
-                  <CinemaCard>
-                    <CardContent>
-                      <Typography variant="h6" component="h3">
-                        {cinema.name}
-                      </Typography>
-                      <List>
-                        {cinema.times.map((time, timeIndex) => (
-                          <ListItem
-                            key={timeIndex}
-                            sx={{
-                              mb: 2,
-                              borderRadius: "10px",
-                              background: "rgb(10,31,95, 0.2)",
-                              "&:hover": {
-                                background: "rgb(10,31,95, 0.4)",
-                                transition: "0.3s ease-in-out",
-                                cursor: "pointer",
-                              },
-                            }}
-                            onClick={() => {
-                              router.push("/bookseat");
-                            }}
-                          >
-                            <ListItemText primary={time} />
-                          </ListItem>
-                        ))}
-                      </List>
-                    </CardContent>
-                  </CinemaCard>
+            <Grid item xs={12} md={3}>
+              <CinemasContainer>
+                <Typography variant="h5" component="h2" gutterBottom color="#fff">
+                  Select Date &amp; Time
+                </Typography>
+                <Grid container spacing={2}>
+                  {fetchedMovie.cinemas.map((cinema, index) => (
+                    <Grid item key={index} xs={12}>
+                      <CinemaCard>
+                        <CardContent>
+                        <Calendar onChange={onChange} value={value} />
+                          <List>
+                            {cinema.times.map((time, timeIndex) => (
+                              <ListItem
+                                key={timeIndex}
+                                sx={{
+                                  mb: 2,
+                                  borderRadius: "10px",
+                                  background: "rgb(10,31,95, 0.2)",
+                                  "&:hover": {
+                                    background: "rgb(10,31,95, 0.4)",
+                                    transition: "0.3s ease-in-out",
+                                    cursor: "pointer",
+                                  },
+                                }}
+                                onClick={() => {
+                                  router.push("/bookseat");
+                                }}
+                              >
+                                <ListItemText primary={time} />
+                              </ListItem>
+                            ))}
+                          </List>
+                        </CardContent>
+                      </CinemaCard>
+                    </Grid>
+                  ))}
                 </Grid>
-              ))}
+              </CinemasContainer>
             </Grid>
-          </CinemasContainer>
+          </Grid>
         </Container>
       </Box>
     </DefaultLayout>

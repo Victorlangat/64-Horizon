@@ -1,12 +1,20 @@
-import {MovieCard,  MovieCardMedia, MovieCardContent } from "@/StyledComponents/Landing";
-import { IconButton, Typography } from "@mui/material";
+import DefaultLayout from "@/Layouts/DefaultLayout";
+import {
+  MainContainer,
+  MovieCard,
+  MovieCardMedia,
+  MovieCardContent,
+} from "@/StyledComponents/Landing";
+import { Typography, Box, IconButton } from "@mui/material";
 import React from "react";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import {useRouter } from "next/router";
+import { useGetAllMoviesQuery } from "@/Api/services";
 
-
-function MovieCardComponent() {
+function Movies() {
   const router = useRouter();
+  const {data:movie_data, isLoading:is_loading_moviee, error:MovieError} = useGetAllMoviesQuery()
+  console.log(movie_data, "(*(*(")
   const movies = [
     {
       title: "The Godfather",
@@ -28,32 +36,81 @@ function MovieCardComponent() {
       image: "https://m.media-amazon.com/images/I/91g-WjXKe7L._AC_UF894,1000_QL80_.jpg",
       bio: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
     },
+    {
+      title: "Inception",
+      image: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg",
+      bio: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.",
+    },
+    {
+      title: "Interstellar",
+      image: "https://m.media-amazon.com/images/I/91g-WjXKe7L._AC_UF894,1000_QL80_.jpg",
+      bio: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+    },
   ];
+
   return (
     <>
-      {movies.map((movie) => (
-        <MovieCard key={movie.title} onClick={() => {router.push("/MoviePage")}}>
-          <MovieCardMedia
-          sx={{width:"100%"}}
-            // component="img"
-            image={movie.image}
-            // alt={movie.title}
-          />
-          <MovieCardContent>
-            <Typography variant="h5" component="div">
-              {movie.title}
+      <DefaultLayout>
+        <MainContainer>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              flexWrap: "wrap",
+              width: "100%",
+            }}
+          >
+            <Typography
+              sx={{
+                fontSize: { xs: "16px", md: "23px" },
+                p: { xs: 2, md: 4 },
+                width: "35%",
+                fontWeight: "800",
+              }}
+            >
+              Trending Movies Now
             </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {movie.bio}
+            <Typography
+              sx={{
+                color: "#fff",
+                textDecoration: "none",
+                fontWeight: "800",
+                p: { xs: 2, md: 4 },
+                width: "35%",
+                textAlign: "right",
+              }}
+            >
+              view all
             </Typography>
-          </MovieCardContent>
-          <IconButton aria-label="play/pause">
+          </Box>
+          {movie_data?.map((movie) => (
+            <MovieCard key={movie.title} onClick={() => {router.push("/MoviePage")}}>
+              <MovieCardMedia
+                // component="img"
+                image="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQabt5_iESscctssvn8VxDbvnV7i9C42UyLOCWkFdqwJQE0VZYeg2qcXEcYYLh8td8Zna3zA5Nrk7s7SDElRyhKYiIf2AwvJ7F3mKVis5c"
+                // alt={movie.title}
+                sx={{width:"100%"}}
+              />
+              <MovieCardContent>
+                <Typography variant="h5" component="div">
+                  {movie.title}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {movie.description}
+                </Typography>
+              </MovieCardContent>
+              <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
+              <IconButton aria-label="play/pause">
                 <PlayArrowIcon sx={{ height: 38, width: 38 }} />
               </IconButton>
-        </MovieCard>
-      ))}
+            </Box>
+            </MovieCard>
+          ))}
+        </MainContainer>
+      </DefaultLayout>
     </>
   );
 }
 
-export default MovieCardComponent;
+export default Movies;

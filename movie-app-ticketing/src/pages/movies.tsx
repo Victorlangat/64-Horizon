@@ -97,7 +97,7 @@ function Movies() {
                   {movie.title}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {movie.bio}
+                  {movie.description}
                 </Typography>
               </MovieCardContent>
               <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
